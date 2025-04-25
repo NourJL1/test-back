@@ -1,5 +1,6 @@
 package api.uib.test.entities;
 
+import api.uib.test.entities.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,4 +40,21 @@ public class IdentificationDocument {
 	public void setFileType(String fileType) {
 		this.fileType = fileType;
 	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 }

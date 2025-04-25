@@ -2,6 +2,8 @@ package api.uib.test.controllers;
 
 import api.uib.test.entities.User;
 import api.uib.test.entities.Wallet;
+import api.uib.test.controllers.UserController.LoginRequest;
+import api.uib.test.controllers.UserController.ResponseDTO;
 import api.uib.test.entities.IdentificationType;
 import api.uib.test.entities.Role;
 import api.uib.test.repositories.UserRepository;
@@ -180,7 +182,7 @@ public class UserController {
                 savedUser.getRoles(),
                 savedUser.getEmail(),
                 savedUser.getIdentificationType(),
-                savedUser.getPhone_nbr()
+                savedUser.getPhoneNbr()
         ));
     }
 
@@ -208,7 +210,7 @@ public class UserController {
                         user.getRoles(),
                         user.getEmail(),
                         user.getIdentificationType(),
-                        user.getPhone_nbr()
+                        user.getPhoneNbr()
                 ));
             } else {
                 return ResponseEntity.status(404).body(new ResponseDTO("User not found", null, null, null, null, null, null, null));
@@ -301,7 +303,7 @@ public class UserController {
                 user.getRoles(),
                 user.getEmail(),
                 user.getIdentificationType(),
-                user.getPhone_nbr()
+                user.getPhoneNbr()
         );
 
         return ResponseEntity.ok(response);

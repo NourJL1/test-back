@@ -2,6 +2,9 @@ package api.uib.test.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import api.uib.test.entities.User;
+import api.uib.test.entities.WalletStatus;
+import api.uib.test.entities.WalletType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -19,7 +22,9 @@ public class Wallet {
 
     private Double amount = 0.0; // Initialize with default value
     private String currency = "USD"; // Default currency
-    private String status = "ACTIVE"; // Default status
+    @Enumerated(EnumType.STRING)
+    private WalletStatus status = WalletStatus.PENDING; // Default to PENDING
+
     
     @Enumerated(EnumType.STRING)
     private WalletType walletType ; // Default wallet type
@@ -29,6 +34,9 @@ public class Wallet {
     @JsonIgnore
     private User user;
     
+    public String getOwnerFullName() {
+        return user != null ? user.getFullname() : "";
+    }
     // Default constructor (required by JPA)
     public Wallet() {
     }
@@ -60,13 +68,14 @@ public class Wallet {
         this.currency = currency;
     }
 
-    public String getStatus() {
+    public WalletStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(WalletStatus status) {
         this.status = status;
     }
+
 
     public WalletType getWalletType() {
         return walletType;
